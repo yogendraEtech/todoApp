@@ -1,29 +1,37 @@
 import React from 'react';
-import ToDoName from './ToDoName';
-import ToDoBody from './ToDoBody';
-import './ToDoForm.scss'
+import './ToDoForm.scss';
+import classnames from 'classnames';
 
-class ToDoForm extends React.Component {false
-    constructor() {
-        super();
+class ToDoForm extends React.Component {
+    
+    constructor(props) {
+        super(props);
+        this.ref = React.createRef();
         this.state = {
-            todoName: 'Morning Activities',
-            todoList: [
-                { id: 0, name: 'Early awakening', checked: true },
-                { id: 1, name: 'Exercise', checked: false },
-                { id: 2, name: 'Heavy Breakfast', checked: true }
-            ]
+            item: {}
         }
+       this.i=4;
     }
+   
+  
+      
+    myElement = (event) => {
 
+        this.setState({
+            item: { id: this.i++, name: this.ref.current.value, checked: false }
+        });
+        event.preventDefault();
+    }
     render() {
+        console.log(this.state.item)
         return (
-            <div className='card container todoForm'>
-                <h3 className='card-header'>Todo App</h3>
-                <ToDoName todoName={this.state.todoName}/>
-                <ToDoBody todoList={this.state.todoList}/>
+            <div className='form card-footer'>
+                <form  onSubmit={(e)=>this.props.handleClick(this.state.item)}>
+                    <h5>ToDo</h5>
+                    <input  className='input-box' type="text" placeholder="Your Todo" ref={this.ref}  />
+                    <input className=' btn btn-lgsubmit-btn' type="submit" onMouseDown={this.myElement} />
+                </form>
             </div>
-
         )
     }
 }
