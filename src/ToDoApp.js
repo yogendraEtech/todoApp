@@ -17,8 +17,7 @@ class ToDoApp extends React.Component {
         }
 
     }
-    handleClick(e, data) {
-        e.preventDefault();
+    handleClick( data) {
         this.setState({
             todoList: [...this.state.todoList,data]
         })
@@ -30,7 +29,7 @@ class ToDoApp extends React.Component {
             <div className='card container todoApp'>
                 <h3 className='card-header'>Todo App</h3>
                 <ToDoName todoName={this.state.todoName} /> 
-                <ToDoBody todoList={this.state.todoList} handleClick={(e,data) => this.handleClick(e,data)} />
+                <ToDoBody todoList={this.state.todoList} handleClick={(data) => this.handleClick(data)} />
             </div>
 
         )
