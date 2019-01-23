@@ -11,7 +11,7 @@ class ToDoForm extends React.Component {
             item: {},
             empty:null
         }
-        this.i = 4;
+        this.i = 3;
     }
     myElement = () => {
         this.setState({
