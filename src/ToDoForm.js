@@ -9,19 +9,27 @@ class ToDoForm extends React.Component {
         this.ref = React.createRef();
         this.state = {
             item: {},
-            empty:null
+            empty: null
         }
         this.i = 3;
     }
     myElement = () => {
+
         this.setState({
             item: { id: this.i++, name: this.ref.current.value, checked: false }
         });
     }
-    onchangefun=()=>{
-        this.setState({
-            empty:'input inserted'
-        })
+    onchangefun = () => {
+        if (this.ref.current.value == '') {
+            this.setState({
+                empty: null
+            })
+        }
+        else {
+            this.setState({
+                empty: 'input inserted'
+            })
+        }
     }
     render() {
         let inputClass = classNames({
@@ -32,7 +40,7 @@ class ToDoForm extends React.Component {
                 <form onSubmit={(e) => { e.preventDefault(); this.props.handleClick(this.state.item) }}>
                     <h5>ToDo</h5>
                     <input onChange={this.onchangefun} ref={this.ref} className={!(this.state.empty) ? inputClass + ' input-box' : 'input-box'} type="text" placeholder="Your Todo" />
-                    <input className=' btn btn-lgsubmit-btn' type="submit" onMouseDown={this.myElement} />
+                    <input className=' btn btn-lg submit-btn' type="submit" onMouseDown={this.myElement} />
                 </form>
             </div>
         )

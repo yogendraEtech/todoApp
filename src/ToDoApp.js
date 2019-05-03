@@ -6,7 +6,6 @@ import './ToDoApp.scss'
 class ToDoApp extends React.Component {
     constructor() {
         super();
-        this.arr = [];
         this.state = {
             todoName: 'Morning Activities',
             todoList: [
@@ -16,7 +15,7 @@ class ToDoApp extends React.Component {
             ],
         }
     }
-    handleClick(data) {
+    handleClick=(data)=> {
         this.setState({
             todoList: [...this.state.todoList, data]
         })
@@ -27,19 +26,19 @@ class ToDoApp extends React.Component {
 
                 c => c.id === id ? Object.assign(c, { checked: !c.checked }) : c)
         }));
+        // const index=id;
         // this.setState({
         //     todoList: [...this.state.todoList.slice(0, index), { ...this.state.todoList[index], checked: !this.state.todoList[index].checked }, ...this.state.todoList.slice(index + 1)]
         // })
-
     }
 
-
     render() {
+        console.log(this.state)
         return (
             <div className='card container todoApp'>
                 <h3 className='card-header'>Todo App</h3>
                 <ToDoName todoName={this.state.todoName} />
-                <ToDoBody todoList={this.state.todoList} checkClick={(id) => this.checkClick(id)} handleClick={(data) => this.handleClick(data)} />
+                <ToDoBody todoList={this.state.todoList} checkClick={(id) => this.checkClick(id)} handleClick={this.handleClick} />
             </div>
 
         )

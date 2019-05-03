@@ -10,7 +10,7 @@ class ToDoBody extends React.Component {
     render() {
         return (
             <div>
-                <ToDoItems items={this.props.todoList} checkClick={(event) => this.props.checkClick(event)} />
+                <ToDoItems items={this.props.todoList} checkClick={(id) => this.props.checkClick(id)} />
                 <ToDoForm items={this.props.todoList} handleClick={(data) => this.props.handleClick(data)} />
             </div>
         )

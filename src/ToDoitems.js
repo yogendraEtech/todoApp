@@ -1,9 +1,7 @@
 import React from 'react';
 
 class ToDoItems extends React.Component {
-    constructor(props) {
-        super(props);
-    }
+
     render() {
         const item = this.props.items;
         const rows = item.map((m) => {
